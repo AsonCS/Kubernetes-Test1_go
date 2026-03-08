@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: test1-go
+  labels:
+    app: test1-go
+spec:
+  selector:
+    matchLabels:
+      app: test1-go    
+  replicas: 10
+  template:
+    metadata:
+      labels:
+        app: "test1-go"
+    spec:
+      containers:
+        - name: test1-go
+          image: "asoncs/test1_go:latest"

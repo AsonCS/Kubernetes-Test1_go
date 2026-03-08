@@ -1,0 +1,11 @@
+services:
+  go_app:
+    container_name: go_app
+    build:
+      context: .
+    volumes:
+      - .:/home/go/app
+    environment:
+      - PORT=80
+    ports:
+      - 80:80

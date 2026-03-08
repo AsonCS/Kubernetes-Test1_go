@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test1-go
+  labels:
+    app: test1-go
+spec:
+  containers:
+    - name: test1-go
+      image: asoncs/test1_go:latest
