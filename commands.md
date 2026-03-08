@@ -17,6 +17,11 @@
 `kubectl get deploy`
 `kubectl get deployments`
 `kubectl rollout history deployment test1-go`
-`kubectl rollout undo deployment test1-go` // Rollback to previous version
-`kubectl rollout undo deployment test1-go --to-revision=1` // Rollback to specific version
-`kubectl rollout status deployment test1-go` // Check the status of the rollout
+// Rollback to previous version
+`kubectl rollout undo deployment test1-go`
+// Rollback to specific version
+`kubectl rollout undo deployment test1-go --to-revision=1`
+// Check the status of the rollout
+`kubectl rollout status deployment test1-go`
+// Stop and delete cluster
+`kind delete cluster --name=test1-go`
