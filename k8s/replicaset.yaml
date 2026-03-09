@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: test1-go    
-  replicas: 10
+  replicas: 2
   template:
     metadata:
       labels:

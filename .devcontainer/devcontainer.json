@@ -36,6 +36,7 @@
         "vscode": {
             "extensions": [
                 "google.geminicodeassist",
+                "GitHub.copilot-chat",
                 "esbenp.prettier-vscode",
                 "golang.go"
             ]

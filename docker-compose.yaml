@@ -9,3 +9,4 @@ services:
       - PORT=80
     ports:
       - 80:80
+    command: [ "tail", "-f", "/dev/null" ]

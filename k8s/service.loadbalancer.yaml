@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test1-go-service
+spec:
+  selector:
+    app: test1-go
+  type: LoadBalancer
+  ports:
+  - name: test1-go-service
+    port: 80
+    targetPort: 80
+    protocol: TCP

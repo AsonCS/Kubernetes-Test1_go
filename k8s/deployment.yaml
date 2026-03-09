@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: test1-go    
-  replicas: 10
+  replicas: 2
   template:
     metadata:
       labels:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: test1-go
-          image: "asoncs/test1_go:latest"
+          image: "asoncs/test1_go:v4"
 
       #     resources:
       #       requests: 
@@ -51,27 +51,27 @@ spec:
       #       successThreshold: 1
       #       # initialDelaySeconds: 15
 
-      #     envFrom:
-      #       - configMapRef:
-      #           name: test1-go-env
-      #       - secretRef:
-      #           name: test1-go-secret
+          envFrom:
+            - configMapRef:
+                name: test1-go-env
+            - secretRef:
+                name: test1-go-secret
           
-      #     volumeMounts:
-      #       - mountPath: "/go/myfamily"
-      #         name: config
-      #         readOnly: true
+          volumeMounts:
+            - mountPath: "/home/go/app/myfamily"
+              name: config
+              readOnly: true
       #       - mountPath: "/go/pvc"
       #         name: test1-go-volume
 
-      # volumes:
+      volumes:
       #   - name: test1-go-volume
       #     persistentVolumeClaim:
       #       claimName: test1-go-pvc
 
-      #   - name: config
-      #     configMap:
-      #       name: configmap-family
-      #       items:
-      #       - key: members
-      #         path: "family.txt"  
+        - name: config
+          configMap:
+            name: configmap-family
+            items:
+            - key: members
+              path: "family.txt"  
