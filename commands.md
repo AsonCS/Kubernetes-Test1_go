@@ -1,3 +1,5 @@
+`kind create cluster --config=k8s/kind.yaml --name=test1-go; kubectl apply -f k8s/configmap-env.yaml; kubectl apply -f k8s/configmap-family.yaml; kubectl apply -f k8s/secret.yaml; kubectl apply -f k8s/deployment.yaml; kubectl apply -f k8s/service.yaml`
+
 `brew install kind`
 `kind create cluster --config=k8s/kind.yaml --name=test1-go`
 `kubectl cluster-info --context kind-test1-go`
@@ -47,4 +49,5 @@
 `kubectl logs test1-go-7f6ccfcbbb-24cqh`
 `kubectl apply -f k8s/secret.yaml`
 `kubectl get secret`
+`watch -n1 kubectl get pods`
 

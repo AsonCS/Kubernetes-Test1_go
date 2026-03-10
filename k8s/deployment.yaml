@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: test1-go
-          image: "asoncs/test1_go:v4"
+          image: "asoncs/test1_go:v6"
 
       #     resources:
       #       requests: 
@@ -26,30 +26,30 @@ spec:
       #         cpu: "0.05"
       #         memory: 25Mi
 
-      #     startupProbe:
-      #       httpGet:
-      #         path: /healthz
-      #         port: 80
-      #       periodSeconds: 4
-      #       failureThreshold: 30
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            periodSeconds: 3
+            failureThreshold: 30
 
-      #     readinessProbe:
-      #       httpGet:
-      #         path: /healthz
-      #         port: 80
-      #       periodSeconds: 3
-      #       failureThreshold: 1
-      #       # initialDelaySeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            periodSeconds: 3
+            failureThreshold: 1
+            # initialDelaySeconds: 15 # Commented because of startupProbe
 
-      #     livenessProbe:
-      #       httpGet:
-      #         path: /healthz
-      #         port: 80
-      #       periodSeconds: 5
-      #       failureThreshold: 1
-      #       timeoutSeconds: 1
-      #       successThreshold: 1
-      #       # initialDelaySeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            periodSeconds: 5
+            failureThreshold: 1
+            timeoutSeconds: 1
+            successThreshold: 1
+            # initialDelaySeconds: 20 # Commented because of startupProbe
 
           envFrom:
             - configMapRef:
