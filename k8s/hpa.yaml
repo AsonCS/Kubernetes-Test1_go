@@ -1,0 +1,12 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: test1-go-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    name: test1-go
+    kind: Deployment
+  minReplicas: 1 # Use more than 1 for production
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 25 # Use like 75 for production, so it scales up before it reaches 100% of the CPU

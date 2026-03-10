@@ -50,7 +50,7 @@ func ConfigMap(w http.ResponseWriter, r *http.Request) {
 
 func Healthz(w http.ResponseWriter, r *http.Request) {
 	duration := time.Since(startedTime)
-	if duration.Seconds() > 120 {
+	if duration.Hours() > 2 {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "Not healthy, uptime: %s", duration.String())
 	} else if duration.Seconds() < 15 {

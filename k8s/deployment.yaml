@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: test1-go    
-  replicas: 2
+  replicas: 1 # Controlled by HPA
   template:
     metadata:
       labels:
@@ -16,15 +16,15 @@ spec:
     spec:
       containers:
         - name: test1-go
-          image: "asoncs/test1_go:v6"
+          image: "asoncs/test1_go:v8"
 
-      #     resources:
-      #       requests: 
-      #         cpu: "0.05"
-      #         memory: 20Mi
-      #       limits:
-      #         cpu: "0.05"
-      #         memory: 25Mi
+          resources:
+            requests: # Minimum resources required for the container to run
+              cpu: "0.05" # 50m = 5% of a vCPU core
+              memory: 20Mi # 20 Megabytes
+            limits: # Max resources the container can use
+              cpu: "0.05" # 50m = 5% of a vCPU core
+              memory: 25Mi # 25 Megabytes
 
           startupProbe:
             httpGet:
@@ -61,13 +61,13 @@ spec:
             - mountPath: "/home/go/app/myfamily"
               name: config
               readOnly: true
-      #       - mountPath: "/go/pvc"
-      #         name: test1-go-volume
+            - mountPath: "/home/go/app/pvc"
+              name: test1-go-volume
 
       volumes:
-      #   - name: test1-go-volume
-      #     persistentVolumeClaim:
-      #       claimName: test1-go-pvc
+        - name: test1-go-volume
+          persistentVolumeClaim:
+            claimName: test1-go-pvc
 
         - name: config
           configMap:
